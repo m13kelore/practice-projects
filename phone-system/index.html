@@ -20,16 +20,54 @@
 <body>
 <div id="phoneNumbers">
 	<button>1</button><button>2</button><button>3</button>
-	<button>4</button><button>5</button><button>6</button>
-	<button>7</button><button>8</button><button>9</button>
-	<button>0</button>
+	<!--<button>4</button><button>5</button><button>6</button>-->
+	<!--<button>7</button><button>8</button><button>9</button>-->
+	<!--<button>0</button>-->
 </div>
 </body>
 	<script>
+        $(document).ready(function(){
+            responsiveVoice.speak("press 1 for hours, press 2 for location, press 3 for movie listings");
+        });
+
 		$("#phoneNumbers>button").on('click',handleNumberPress);
+
 		function handleNumberPress(){
 			var buttonPressed = $(this).text();
-			responsiveVoice.speak("you pressed "+buttonPressed);
+
+			switch(buttonPressed){
+				case '1':
+                    responsiveVoice.speak("our hours are from 8am to 11pm 7 days a week");
+                    break;
+				case '2':
+                    responsiveVoice.speak("our location is 500 Spectrum Center Dr, Irvine, CA 92618");
+                    break;
+				case '3':
+				    $("#phoneNumbers>button").off();
+                    responsiveVoice.speak("to hear play times for coco, press 1, to hear play times for justice league, press 2, to hear play times for daddy's home 2, press 3");
+                    $("#phoneNumbers>button").on('click',movieTimes);
+
+			}
+
 		}
+
+		function movieTimes() {
+            var buttonPressed2 = $(this).text();
+
+            switch (buttonPressed2) {
+                case '1':
+                    responsiveVoice.speak("coco is playing at 10am, 2pm, 6pm");
+                    break;
+                case '2':
+                    responsiveVoice.speak("justice league is playing at 10am, 2pm, 6pm");
+                    break;
+                case '3':
+                    responsiveVoice.speak("daddy's home 2 is playing at 10am, 2pm, 6pm");
+                    break;
+            }
+        }
+
+
+
 	</script>
 </html>
