@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shipping Calculator</title>
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+   <input type="text" id="weight_input" placeholder="weight of package in pounds"><br>
+	<input type="radio" class="shipping_time" name="speed" >
+   <button id="calculate_button">calculate</button><br>
+	<div id="display_div"></div>
+
+</div>
+
+</body>
+	<script>
+    //for help to figure out this code, make sure to email instructors@learningfuze.com
+    function apply_click_handlers(){
+	//add a click handler that affects the button element.  You can use the tagname "button", or the ID "#calculate_button"
+	//In the example listed, you do not need the document ready part, just the part inside.
+	//see here for an example of how to apply a click handler:  http://www.w3schools.com/jquery/
+	//in the click handler, call the function "calculate_shipping". 
+	    // for more info, check out "Invoking a Function as a Function" here: http://www.w3schools.com/js/js_function_invocation.asp
+
+        $("#calculate_button").click(calculate_shipping);
+    }
+    
+    function calculate_shipping(){
+      	//get the value from the input.  you can either use "input" or the input's id, "#weight_input", and store it into a variable
+      		//variables and storing: http://www.w3schools.com/js/js_variables.asp
+      		//getting/returning (Check out "When used to return value") the value of an inputs: http://www.w3schools.com/jquery/html_val.asp
+	//the value from the input is a string, convert it to a number with parseInt, and store it into the original var from above
+	    //parseInt info: http://www.w3schools.com/jsref/jsref_parseint.asp
+	//multiply the value from above by 16 to convert he pounds to ounces, store it into a variable
+	//write an if statement.  http://www.w3schools.com/js/js_if_else.asp
+	    //if the weight from above is < 10 ounces
+	    	//multiply the weight by .20 to get the shipping cost, and store it in the variable "cost"
+	    //else if the weight is < 30 ounces
+	    	//multiply the weight by .40 to get the shipping cost, and store it in the variable "cost"
+	    //else
+	    	//multiply the weight by .60 to get the shipping cost, and store it in the variable "cost"
+	    
+		//call the function display_shipping:  http://www.w3schools.com/js/js_functions.asp
+	    		//pass the "cost" variable into the function as a parameter: http://www.w3schools.com/js/js_function_parameters.asp
+
+		var weightInput = parseInt($("#weight_input").val());
+//		var weightNumber = parseInt(weightInput);
+        var weightOunces = weightInput * 16;
+        var cost;
+
+        if(weightOunces < 10){
+            cost = weightOunces * .20;
+		} else if (weightOunces < 30){
+            cost = weightOunces * .40;
+		} else{
+		    cost = weightOunces* .60;
+		}
+
+		cost = cost.toFixed(2);
+
+       return display_shipping(cost);
+
+    }
+    
+    function display_shipping(cost){
+	//the variable cost above is passed in from when the function was called above.  it behaves exactly like a normal variable
+    	//using a jquery selector, change the text of the div (id display_div) to the variable cost
+	    //http://www.w3schools.com/jquery/html_text.asp
+    $("#display_div").text("Shipping Cost: $" + cost);
+    }
+
+    //call/invoke the function "apply_click_handlers"
+    $(apply_click_handlers);
+		
+	</script>
+</html>

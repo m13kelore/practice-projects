@@ -1,0 +1,32 @@
+.container{
+    width: 200px;
+    height: 300px;
+    border: 2px solid darkgray;
+
+}
+
+#calculate_button{
+    transition-duration: 0.4s;
+    background-color: darkcyan;
+    padding: 15px 30px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    margin: 15px auto 0 auto;
+}
+
+#weight_input{
+    width: 90%;
+    height: 50px;
+    display: inline-block;
+    font-size: 15px;
+    text-wrap: normal;
+    /*border: none;*/
+}
+
+#display_div{
+    margin: 15px auto 0 auto;
+    font-size: 20px;
+    border-top: 1px solid darkgray;
+}
