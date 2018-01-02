@@ -247,7 +247,7 @@ function Blackjack(){
         }else if(card['number'] === 'J' || card['number'] === 'Q' || card['number'] === 'K'){
             this.playerTotal += 10;
         }else if(card['number'] === 'A'){
-            this.playerTotal += 1;
+            this.playerTotal += 11;
         }
     };
 
@@ -305,7 +305,7 @@ function Blackjack(){
         }else if(card['number'] === 'J' || card['number'] === 'Q' || card['number'] === 'K'){
             this.houseTotal += 10;
         }else if(card['number'] === 'A'){
-            this.houseTotal += 1;
+            this.houseTotal += 11;
         }
     };
 
