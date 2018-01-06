@@ -41,7 +41,8 @@ function Adventure(character){
 }
 
 function Battle(character){
-    var opponent = new Character('opponent');
+    this.opponent = new Character('opponent');
+
     //win: get gold + increase of random stat
     //flee: give up
     //lose: die
