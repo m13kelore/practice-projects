@@ -27,13 +27,13 @@ function Character() {
   };
 
   this.checkName = function(name) {
-    console.log("check name is running");
     var nameLength = false;
     var firstLetter = false;
     var consonantCheck = false;
     var nonLetterCheck = false;
     var vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"];
 
+    //check to make sure length of name fits parameters
     if (name.length < 4) {
       console.log("Name is too short. Please try again.");
       return;
@@ -44,22 +44,40 @@ function Character() {
       nameLength = true;
     }
 
-    // if (|) {
-    //   firstLetter = true;
-    // } else {
-    //   console.log("Invalid first letter of name. Please try again.");
-    //   return;
-    // }
+    //check to make sure first letter of name is vowel
+    if (vowels.indexOf(name[0]) === -1) {
+      console.log("Name must start with a vowel. Please try again.");
+      return;
+    } else {
+      firstLetter = true;
+    }
 
     //check to make sure that name has a consonant
-    if (name === -1) {
-      console.log("Consonant check: success");
-    } else {
-      console.log("Invalid character in name. Please try again.");
-      return;
+    for (var index = 1; index < name.length; index++) {
+      if (vowels.indexOf(name[index]) === -1) {
+        firstLetter = true;
+        break;
+      } else {
+        console.log(
+          "Name must have at least one consonant letter. Please try again."
+        );
+        return;
+      }
     }
 
     //check to make sure names only have letters (no numbers/other characters ASCII)
+    for (var char = 1; char < name.length; char++) {
+      if (name.charCodeAt(index) < 65 || name.charCodeAt(index) > 122 ) {
+        console.log(
+          "Name must not have any non-letter characters. Please try again."
+        );
+        return;
+      } else {
+        nonLetterCheck = true;
+      }
+    }
+
+    
   };
 
   this.getStats = function() {};
